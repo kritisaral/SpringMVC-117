@@ -19,8 +19,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
 	public int saveEmployee(Employee employee) {
 
-		String sql = "insert into EMPLOYEE(id,name,dept,age) values(" + employee.getId() + ",'"
-				+ employee.getName() + "','" + employee.getDept() + "'," + employee.getAge() + ")";
+		String sql = "insert into EMPLOYEE(id,name,dept,age) values(" + employee.getId() + ",'" + employee.getName()
+				+ "','" + employee.getDept() + "'," + employee.getAge() + ")";
 		return template.update(sql);
 
 	}
@@ -41,20 +41,22 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
 	@Override
 	public Employee getEmployeeById(int id) {
-		String sql="select * from Employee where id=?"; 
-		return template.queryForObject(sql, new Object[]{id},new BeanPropertyRowMapper<Employee>(Employee.class));
+		String sql = "select * from EMPLOYEE where id=?";
+		return template.queryForObject(sql, new Object[] { id }, new BeanPropertyRowMapper<Employee>(Employee.class));
 	}
 
 	@Override
-	public void updateEmployee(Employee employee) {
-		// TODO Auto-generated method stub
-		
+	public int updateEmployee(Employee employee) {
+		String sql = "update EMPLOYEE set name='" + employee.getName() + "', dept='" + employee.getDept() + "',age="
+				+ employee.getAge() + " where id=" + employee.getId() + "";
+		return template.update(sql);
+
 	}
 
 	@Override
-	public void deleteEmployee(int id) {
-		// TODO Auto-generated method stub
-		
+	public int deleteEmployee(int id) {
+		String sql = "delete from EMPLOYEE where id=" + id + "";
+		return template.update(sql);
 	}
 
 }

@@ -9,6 +9,8 @@
 		<th>Name</th>
 		<th>department</th>
 		<th>age</th>
+		<th>edit</th>
+		<th>delete</th>
 	</tr>
 	<c:forEach var="emp" items="${list}">
 		<tr>
@@ -16,7 +18,12 @@
 			<td>${emp.name}</td>
 			<td>${emp.dept}</td>
 			<td>${emp.age}</td>
-		</tr>
-	</c:forEach>
-</table>
-<br />
+		
+	
+   <td><a href="editemployee/${emp.id}">Edit</a></td>  
+   <td><a href="deleteemp/${emp.id}">Delete</a></td>  
+   </tr>  
+   </c:forEach>  
+   </table>  
+   <br/>  
+   <a href="EmployeeForm">Add New Employee</a>  
